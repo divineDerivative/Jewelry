@@ -33,20 +33,24 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HarmonyInit.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="JewelryDefOf.cs" />
     <Compile Include="JewelryThing.cs" />
     <Compile Include="JewelryUtility.cs" />
     <Compile Include="RecipeWorker_Jewelry.cs" />
-    <Compile Include="Settings\JewelryMod.cs" />
-    <Compile Include="Settings\JewelrySettings.cs" />
+    <Compile Include="JewelryMod.cs" />
+    <Compile Include="JewelrySettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThoughtWorkers\ThoughtWorker_WearingJewelry.cs" />
+    <Compile Include="ThoughtWorker_WearingJewelry.cs" />
     <Compile Include="WorldComp_Requirements.cs" />
   </ItemGroup>
   <Choose>
@@ -78,4 +82,8 @@
     </When>
   </Choose>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>robocopy "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Jewelry" "C:\RimWorld_Debug\Mods\Jewelry" /r:1 /s /xo /xd Source .vs .git /xf *.sln .gitattributes .gitignore .editorconfig *.md || set errorlist=0
+robocopy "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Jewelry" "C:\RimWorld_Debug_v1_4\Mods\Jewelry" /r:1 /s /xo /xd Source .vs .git /xf *.sln .gitattributes .gitignore .editorconfig *.md || set errorlist=0</PostBuildEvent>
+  </PropertyGroup>
 </Project>

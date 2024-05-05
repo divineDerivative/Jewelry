@@ -11,7 +11,6 @@ namespace Jewelry
     [HarmonyPatch(typeof(ApparelUtility), nameof(ApparelUtility.CanWearTogether))]
     public static class ApparelUtility_CanWearTogether_PostFix
     {
-        [HarmonyPostfix]
         public static void Postfix(ThingDef A, ThingDef B, ref bool __result)
         {
             if (__result && A.thingClass == typeof(JewelryThing) && B.thingClass == typeof(JewelryThing))
